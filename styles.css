@@ -1,40 +1,40 @@
 body {
-    background-color: #b3b3b3;
+  background-color: #b3b3b3;
 }
 
 #ericeira-body {
-    background-color: #7fd0c6d8;
+  background-color: #7fd0c6d8;
 }
 
 img {
   display: block;
-  margin: auto;
   width: 80%;
+  margin: auto;
 }
 
 .topnav {
-  background-color: #7fd0c6d8;
   overflow: hidden;
+  background-color: #7fd0c6d8;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
-  text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
+  color: #f2f2f2;
   font-size: 17px;
+  text-align: center;
+  text-decoration: none;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #e5b768;
   color: black;
+  background-color: #e5b768;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #1c7f9bd8;
   color: white;
+  background-color: #1c7f9bd8;
 }
