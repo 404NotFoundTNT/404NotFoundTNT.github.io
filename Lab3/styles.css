@@ -278,29 +278,135 @@ img {
   }
 }
 
- #ericeira-body {
+ .info_body {
+  min-height: 100vh;
+  width: 100%;
+
   display: grid;
-  grid-template-columns: 220px 1fr;
+
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 100px 1fr 60px;
 
   grid-template-areas:
-    "header header"
-    "menu main"
-    "footer footer";
+    "info_head info_head info_head"
+    "info_nav info_main info_aside"
+    "info_footer info_footer info_footer";
+
+  gap: 10px;
+  padding: 10px;
+
+  background-color: #7accc5;
 }
 
-header {
-  grid-area: header;
+/* Áreas da grid */
+
+#info_head {
+  grid-area: info_head;
 }
 
-.topnav {
-  grid-area: menu;
+#info_nav {
+  grid-area: info_nav;
 }
 
-main {
-  grid-area: main;
+#info_main {
+  grid-area: info_main;
 }
 
-footer {
-  grid-area: footer;
+#info_aside {
+  grid-area: info_aside;
+}
+
+#info_footer {
+  grid-area: info_footer;
+}
+
+/* Header */
+
+#info_head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+}
+
+/* Menu */
+
+#info_nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+
+  padding: 20px;
+  background-color: #7accc5;
+
+}
+
+#info_nav a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#info_nav a:hover,
+#info_nav a.active {
+  color: #174a75;
+}
+
+/* Main */
+
+#info_main {
+  padding: 20px;
+  background-color: white;
+}
+
+/* Tabela */
+
+.tabela-ericeira {
+  width: 100%;
+  border-collapse: collapse;
+  color: #174a75;
+}
+
+.tabela-ericeira th,
+.tabela-ericeira td {
+  padding: 15px;
+  border: 1px solid #1683b8;
+  text-align: center;
+}
+
+.tabela-ericeira th {
+  background-color: #087bb5;
+  color: white;
+}
+
+.tabela-ericeira tr:nth-child(even) {
+  background-color: #c6edf5;
+}
+
+/* Aside */
+
+#info_aside {
+  padding: 20px;
+  background-color: #7accc5;
+}
+
+#info_aside p {
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+/* Footer */
+
+#info_footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  min-height: 60px;
+
+  padding: 20px;
+  background-color: white;
 }
