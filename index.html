@@ -8,36 +8,94 @@
   </head>
   <body>
     <header>
-      <h1>Primeira Página Web!</h1>
+      <section class="headSec headLeft">
+        <h2>Tomás Negreiro</h2>
+      </section>
+      <section class="headSec headRight">
+        <ul class="nav2">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#disciplina">Disciplina</a></li>
+        </ul>
+      </section>
     </header>
     <main>
-      <p>Eis a minha primeira página Web!</p>
-      <p>
-        Na unidade Curricular de
-        <a
-          href="https://moodle.ensinolusofona.pt/course/view.php?id=27320"
-          target="_blank"
-        >
-          Desenvolvimento de Interfaces Web
-        </a>
-        abordaremos as seguintes tecnologias Web &#127760;:
-      </p>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>React e Next.js</li>
-      </ul>
-      <p>Iremos criar soluções criativas!</p>
-      <ul>
-        <li><a href="Lab1/index.html">Lab1</a></li>
-        <li><a href="Lab2/index.html">Lab2</a></li>
-      </ul>
-      <img
-        class="indexImg"
-        src="images/diw.svg"
-        alt="Desenvolvimento de Interfaces Web"
-      />
+      <section id="hero">
+        <p class="eyebrow">
+          PROGRAMADOR&nbsp;&nbsp;•&nbsp;&nbsp;FULLSTACK&nbsp;&nbsp;•&nbsp;&nbsp;CRIATIVIDADE
+        </p>
+
+        <h1>
+          Crio experiências digitais<br />
+          que ligam ideias a pessoas.
+        </h1>
+
+        <p class="description">
+          Sou Tomás Negreiro, programador fullstack focado no desenvolvimento
+          de<br />
+          aplicações com uma abordagem funcional e criativa.
+        </p>
+
+        <a href="#projetos" class="hero-button"> Explorar projetos </a>
+      </section>
+      <section id="projetos">
+        <h2>Projetos/Labs</h2>
+        <p>Alguns ex desenvolvidos ao longo da uc</p>
+        <ul>
+          <li>
+            <a href="Lab1/index.html">
+              <h3>Lab 1</h3>
+              <p>Estrutura base e semântica</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="Lab2/index.html">
+              <h3>Lab 2</h3>
+              <p>Estilos e layout responsivo</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="Lab3/index.html">
+              <h3>Lab 3</h3>
+              <p>Interatividade com JavaScript</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section id="disciplina">
+        <article class="disciplinaTexto"></article>
+          <h2>Primeira Página Web!</h2>
+          <p>Eis a minha primeira página Web!</p>
+          <p>
+            Na unidade Curricular de
+            <a
+              href="https://moodle.ensinolusofona.pt/course/view.php?id=27320"
+              target="_blank"
+            >
+              Desenvolvimento de Interfaces Web
+            </a>
+            abordaremos as seguintes tecnologias Web &#127760;:
+          </p>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React e Next.js</li>
+          </ul>
+          <p>Iremos criar soluções criativas!</p>
+        </article>
+        <article class="disciplinaImagem">
+           <img
+            class="indexImg"
+            src="images/diw.svg"
+            alt="Desenvolvimento de Interfaces Web"
+          />
+        </article>
+
+      </section>
     </main>
     <footer>
       <p>Universidade Lusófona © 2026</p>

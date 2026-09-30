@@ -1,9 +1,11 @@
-body {
-  background-color: #b3b3b3;
+* {
+  margin: 0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-#ericeira-body {
-  background-color: #7fd0c6d8;
+body {
+  background-color: #b3b3b3;
 }
 
 img {
@@ -12,93 +14,192 @@ img {
   margin: auto;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #7fd0c6d8;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  padding: 14px 16px;
-  color: #f2f2f2;
-  font-size: 17px;
-  text-align: center;
-  text-decoration: none;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  color: black;
-  background-color: #e5b768;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  color: white;
-  background-color: #1c7f9bd8;
-}
-
 .indexImg{
   margin: 0px ;
     width: 300px
 }
 
-.smallFotos{
+header{
+  position: sticky;
+  height: 10vh;
+  top: 0;
+  padding: 8px;
+  background-color: rgb(23, 33, 23);
+
+
+  display: flex;
+  align-items: center;              /* centra verticalmente */
+  justify-content: space-between;
+
+}
+
+.headLeft {
+  text-align: left;
+}
+
+.headRight {
+  text-align: right;
+}
+
+#disciplina, #projetos, #hero {
+  height:100vh
+}
+
+#hero{
+  color: white;
+ background-image:  url("images/hero.png");
+ background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5px;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding: 40px 80px;
+  text-align: right;
+  gap: 24px;
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 1.05;
+}
+
+#hero .eyebrow {
+  margin: 0;
+
+  font-size: 18px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+#hero .description {
+  margin: 10px 0 0;
+
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+#hero .hero-button {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 16px 30px;
+  background-color: rgb(67, 143, 50);
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 2px 3px 3px rgb(135, 237, 228);
+}
+
+.nav2 a {
+
+  padding: 10px 20px;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 2px 3px 3px lightgrey;
+}
+
+
+.nav2{
+    list-style: none;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: right;
+  gap: 1rem;
 }
 
-.smallFotos img{
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.poema {
-  padding: 20px;
-  text-align: center;
-  background-color: #e0f7fa;
-  border-radius: 15px;
-}
-
-.poema p {
-  margin: 8px 0;
-  font-size: 20px;
-}
-
-.poema p:nth-child(odd) {
-  color: #0077b6;
-}
-
-.poema p:nth-child(even) {
-  color: #e58f1f;
-}
-
-.tabela-ericeira {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-}
-
-.tabela-ericeira th {
-  padding: 12px;
+#projetos{
+    height:100vh;
+  background-color: rgb(54, 90, 78);
   color: white;
-  background-color: #0077b6;
-  border: 1px solid #023e8a;
-  text-align: center;
-}
-
-.tabela-ericeira td {
   padding: 10px;
-  color: #023e8a;
-  border: 1px solid #0077b6;
-  text-align: center;
 }
 
-.tabela-ericeira tr:nth-child(even) td {
-  background-color: #caf0f8;
+#projetos ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+
+  width: 100%;
+  max-width: 650px;
+
+  margin: 35px auto 0;
+  padding: 10px;
+
+  list-style: none;
 }
+
+#projetos li {
+  width: 270px;
+}
+
+#projetos li a {
+  display: block;
+  height: 84px;
+  box-sizing: border-box;
+
+  padding: 16px;
+
+  background-color: #7ecd89;
+  color: #222;
+
+  border: 1px solid #d4e4d9;
+  border-radius: 12px;
+
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+#disciplina {
+  min-height: 100vh;
+  padding: 60px;
+
+  background-color: #684881;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  gap: 60px;
+}
+
+.disciplinaTexto,
+.disciplinaImagem {
+  width: 50%;
+}
+
+.disciplinaTexto {
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 700px) {
+  #disciplina {
+    flex-direction: column;
+    gap: 30px;
+
+    padding: 40px 25px;
+  }
+
+  .disciplina-texto,
+  .disciplina-imagem {
+    width: 100%;
+  }
+
+  .indexImg {
+    max-width: 300px;
+  }
+}
+
+
+
