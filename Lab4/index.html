@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <p id="passar" onmouseover="entrar()" onmouseout="sair()">
+        1. Passa por aqui!
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <p id="pintar">2. Pinta-me!</p>
+        <button id="vermelho">Red</button>
+        <button id="verde">Green</button>
+        <button id="azul">Blue</button>
+      </section>
+
+      <section>
+        <label for="texto">3. Experimenta escrever...</label>
+        <input id="texto" type="text" oninput="escrever()" />
+      </section>
+
+      <section>
+        <label for="cor">4. Escolha uma cor em inglês:</label>
+        <input id="cor" type="text" />
+        <button onclick="mudarFundo()">submeter</button>
+      </section>
+
+      <section>
+        <p>5.</p>
+        <button id="botaoContar" ondblclick="reiniciar()">Conta!</button>
+        <p id="contador">0</p>
+      </section>
+
+      <section>
+        <img
+          src="praia.jpg"
+          alt="Uma praia"
+          onmousemove="mover()"
+          onmouseout="reporImagem()"
+        />
+        <p id="mensagem">Move o rato sobre a imagem.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Faz duplo clique em “Conta!” para reiniciar.</p>
+    </footer>
+  </body>
+</html>

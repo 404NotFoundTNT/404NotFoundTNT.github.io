@@ -1,0 +1,42 @@
+body {
+    margin: 15px;
+    background-color: lavender;
+    color: black;
+    font-family: "Times New Roman", serif;
+    font-size: 28px;
+}
+
+header,
+section {
+    margin-bottom: 90px;
+}
+
+header p {
+    margin-top: 0;
+    display: inline-block;
+}
+
+button,
+input {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    padding: 5px 12px;
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    width: 250px;
+}
+
+img {
+    width: 250px;
+    border: 3px solid transparent;
+}
+
+#mensagem,
+footer {
+    font-size: 18px;
+}
