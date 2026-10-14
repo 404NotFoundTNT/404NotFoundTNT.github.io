@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <p id="passar" onmouseover="entrar()" onmouseout="sair()">
+        1. Passa por aqui!
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <p id="pintar">2. Dá cor ao meu dia!</p>
+        <button class="color" data-color="orange">Laranja</button>
+        <button class="color" data-color="purple">Roxo</button>
+        <button class="color" data-color="pink">Rosa</button>
+        <button class="color" data-color="green">Verde</button>
+      </section>
+
+      <section>
+        <label for="texto">3. Experimenta escrever...</label>
+        <input id="texto" type="text" oninput="escrever()" />
+      </section>
+
+      <section>
+        <label for="cor">4. Escolha uma cor:</label>
+        <select id="cor">
+          <option value="white">White</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+        </select>
+      </section>
+      <section>
+        <label for="direcao">Direção das bolas:</label>
+
+        <select id="direcao">
+          <option value="row">row</option>
+          <option value="row-reverse">row-reverse</option>
+          <option value="column">line</option>
+          <option value="column-reverse">line-reverse</option>
+        </select>
+
+        <ul id="containerBolas" aria-label="Bolas coloridas">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </section>
+      <section>
+        <p>5.</p>
+        <button id="botaoContar" ondblclick="reiniciar()">Conta!</button>
+        <p id="contador">0</p>
+      </section>
+
+      <section>
+        <p>6.</p>
+
+        <form id="formulario">
+          <input
+            id="nome"
+            type="text"
+            placeholder="Insira o seu nome"
+            aria-label="Nome"
+            required
+          />
+
+          <input
+            id="idade"
+            type="number"
+            placeholder="Insira a sua idade"
+            aria-label="Idade"
+            min="0"
+            required
+          />
+
+          <button type="submit">Submit</button>
+        </form>
+
+        <p id="resultado"></p>
+      </section>
+
+      <section>
+        <p id="contadorAutomatico">7. Automatic Counter: 0</p>
+      </section>
+
+      <section>
+        <h2>8.</h2>
+        <img
+          src="../images/praiaSul.png"
+          alt="Uma praia"
+          onmousemove="mover()"
+          onmouseout="reporImagem()"
+        />
+        <p id="mensagem">Move o rato sobre a imagem.</p>
+      </section>
+    </main>
+    <section>
+      <h2>9. Contador com Local Storage</h2>
+
+      <p id="contadorLocal">0</p>
+
+      <button id="incrementarLocal" type="button">Incrementar</button>
+      <button id="decrementarLocal" type="button">Decrementar</button>
+      <button id="resetLocal" type="button">Reset</button>
+    </section>
+
+    <footer>
+      <p>Faz duplo clique em “Conta!” para reiniciar.</p>
+    </footer>
+  </body>
+</html>
