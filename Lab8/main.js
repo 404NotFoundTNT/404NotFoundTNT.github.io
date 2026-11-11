@@ -2,6 +2,19 @@
 if (localStorage.getItem("produtos-selecionados") === null) {
   localStorage.setItem("produtos-selecionados", JSON.stringify([]));
 }
+let todosProdutos = [];
+
+const categoria = document.querySelector("#categoria");
+const ordenar = document.querySelector("#ordenar");
+const pesquisa = document.querySelector("#pesquisa");
+
+
+const checkout = document.querySelector("#checkout");
+const comprar = document.querySelector("#comprar");
+const mensagemCompra = document.querySelector("#mensagem-compra");
+const valorFinal = document.querySelector("#valor-final");
+const referencia = document.querySelector("#referencia");
+
 
 // B. Funções utilitárias
 
@@ -20,13 +33,15 @@ function criarProduto(produto) {
     imagem.alt = produto.title;
     article.append(imagem);
 
-    const descricao = document.createElement("p");
-    descricao.textContent = produto.descricao;
-    article.append(descricao);
 
     const preco = document.createElement("p");
     preco.textContent = `Custo total: ${produto.price} €`;;
     article.append(preco);
+
+    const descricao = document.createElement("p");
+      descricao.className = "descricao";
+      descricao.textContent = produto.description;
+      article.append(descricao);
 
     const rating = document.createElement("p");
     rating.textContent = `Avaliação: ${produto.rating.rate} (${produto.rating.count} avaliações)`;
@@ -40,6 +55,7 @@ function criarProduto(produto) {
     botao.addEventListener("click", () => {
     const produtosSelecionados = JSON.parse(
       localStorage.getItem("produtos-selecionados")
+
     );
 
     // Adicionar o produto à lista
@@ -47,6 +63,8 @@ function criarProduto(produto) {
 
     // Guardar a lista atualizada
     localStorage.setItem("produtos-selecionados",JSON.stringify(produtosSelecionados));
+
+     atualizaCesto();
   });
 
     return article;
@@ -123,30 +141,145 @@ function criaProdutoCesto(produto) {
   return article;
 }
 
+const criarDadosCompra = (produtos) => {
+  return {
+    products: produtos.map(produto => produto.id),
+    student: document.querySelector("#estudante").checked,
+    coupon: document.querySelector("#cupao").value.trim()
+  };
+};
+
+
+const tratarResposta = async (response) => {
+  const resultado = await response.json();
+
+  if (!response.ok || resultado.error) {
+    throw new Error(
+      resultado.error || `Erro na compra (${response.status}).`
+    );
+  }
+
+  return resultado;
+};
+
+
+const mostrarCompra = (resultado) => {
+  mensagemCompra.textContent = "";
+
+  valorFinal.textContent =
+    `Valor final a pagar: ${resultado.totalCost} €`;
+
+  referencia.textContent =
+    `Referência de pagamento: ${resultado.reference}`;
+};
+
+const enviarCompra = (dados) => {
+  comprar.disabled = true;
+  mensagemCompra.textContent = "A processar...";
+
+  fetch("https://deisishop.pw.deisi.ulusofona.pt/buy", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  })
+    .then(tratarResposta)
+    .then(mostrarCompra)
+    .catch(error => {
+      mensagemCompra.textContent = error.message;
+    })
+    .finally(() => {
+      comprar.disabled = false;
+    });
+};
+
+// Event listener
+checkout.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  mensagemCompra.textContent = "";
+  valorFinal.textContent = "";
+  referencia.textContent = "";
+
+  const produtos = JSON.parse(
+    localStorage.getItem("produtos-selecionados")
+  ) || [];
+
+  if (produtos.length === 0) {
+    mensagemCompra.textContent = "Adiciona produtos ao cesto primeiro.";
+    return;
+  }
+
+  enviarCompra(criarDadosCompra(produtos));
+});
+
 
 // C. Event handlers
-function renderizarProdutos(produtos){
-    const div = document.querySelector("#produtos");
-    produtos.forEach(produto => {
-        const article = criarProduto(produto);
-        div.append(article);
-    });
-}
+const renderizarProdutos = (produtos) => {
+  const lista = document.querySelector("#produtos");
+
+  lista.innerHTML = "";
+
+  produtos.forEach((produto) => {
+    lista.append(criarProduto(produto));
+  });
+};
+
+
+const atualizarProdutos = () => {
+  let produtos = todosProdutos.filter((produto) => {
+    return (
+      (categoria.value === "" || produto.category === categoria.value) &&
+      produto.title.toLowerCase().includes(pesquisa.value.trim().toLowerCase())
+    );
+  });
+
+  if (ordenar.value === "crescente") {
+    produtos.sort((a, b) => a.price - b.price);
+  }
+
+  if (ordenar.value === "decrescente") {
+    produtos.sort((a, b) => b.price - a.price);
+  }
+
+  renderizarProdutos(produtos);
+};
 
 
 // D. Event Listeners
-
+categoria.addEventListener("change", atualizarProdutos);
+ordenar.addEventListener("change", atualizarProdutos);
+pesquisa.addEventListener("input", atualizarProdutos);
 
 // E. Inicialização
 
 fetch('https://deisishop.pw.deisi.ulusofona.pt/products')
-.then(response=> response.json())
-.then(produtos=>{
-  console.log(produtos)
-  renderizarProdutos(produtos)
-}).catch(error => {
-  console.error("Erro ao carregar os produtos:", error);
+  .then(response => response.json())
+  .then(produtos => {
+    console.log(produtos);
 
-});
+    todosProdutos = produtos;
+    atualizarProdutos();
+  })
+  .catch(error => {
+    console.error("Erro ao carregar os produtos:", error);
+  });
+
+fetch("https://deisishop.pw.deisi.ulusofona.pt/categories")
+  .then(response => response.json())
+  .then(categorias => {
+    categorias.forEach(cat => {
+      const option = document.createElement("option");
+
+      option.value = cat.name;
+      option.textContent = cat.name;
+
+      categoria.append(option);
+    });
+  })
+  .catch(error => {
+    console.error("Erro ao carregar as categorias:", error);
+  });
 
 atualizaCesto();

@@ -6,7 +6,6 @@ body {
   margin: 0;
   background-color: #f4f4f4;
   color: #222;
-  font-family: Georgia, "Times New Roman", serif;
 }
 
 /* Cabeçalho */
@@ -24,21 +23,14 @@ header h1 {
   font-size: 40px;
 }
 
-nav {
-  display: flex;
-  gap: 25px;
-}
-
 nav ul {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 25px;
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
-
 
 nav a {
   color: white;
@@ -59,38 +51,93 @@ main > h2 {
   font-size: 30px;
 }
 
-/* Contentor dos produtos */
-#produtos {
+/* Filtros */
+#filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 25px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+#filtros label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+#filtros select,
+#filtros input {
+  min-width: 180px;
+  padding: 10px;
+  font: inherit;
+  font-weight: normal;
+}
+
+/* Listas de produtos */
+#produtos,
+#produtos-selecionados {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
 
-/* Cada produto */
-#produtos article {
+#produtos-selecionados {
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* Cartões */
+#produtos article,
+#produtos-selecionados article {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: calc((100% - 60px) / 3);
   padding: 25px;
   background-color: white;
+  border-radius: 12px;
   text-align: center;
 }
 
-#produtos article h2 {
+#produtos-selecionados article {
+  width: calc((100% - 80px) / 3);
+  min-width: 0;
+  min-height: 350px;
+  color: black;
+}
+
+#produtos article h2,
+#produtos-selecionados article h2 {
   margin: 0 0 20px;
   font-size: 24px;
 }
 
-#produtos article img {
+#produtos article img,
+#produtos-selecionados article img {
   width: 100%;
   height: 180px;
   object-fit: contain;
 }
 
+#produtos-selecionados article img {
+  height: 170px;
+}
+
 .preco {
   font-size: 20px;
+}
+
+#produtos-selecionados .preco {
+  margin: 20px 0 10px;
 }
 
 .descricao {
@@ -102,137 +149,131 @@ main > h2 {
   line-height: 1.4;
 }
 
-/* Mantém os botões no fundo dos cartões */
-#produtos article button {
+/* Botões */
+#produtos article button,
+#produtos-selecionados article button {
   margin-top: auto;
   padding: 6px 12px;
   cursor: pointer;
 }
 
-/* Dois produtos por linha em ecrãs médios */
-@media (max-width: 900px) {
-  #produtos article {
-    width: calc((100% - 30px) / 2);
-  }
+#produtos-selecionados article button {
+  padding: 5px 12px;
+  font-size: 16px;
 }
 
-/* Um produto por linha em ecrãs pequenos */
-@media (max-width: 600px) {
-  #produtos article {
-    width: 100%;
-  }
-
-  header {
-    padding: 15px;
-  }
-
-  nav {
-    gap: 15px;
-  }
-}
-
-/* Secção do cesto */
-
-
+/* Cesto */
 #cesto {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: none;
-  margin: 50px 0 0;
+  margin-top: 50px;
   padding: 70px 30px 40px;
   background-color: #75c354;
 }
 
+#cesto > h2,
+#total-cesto {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
 #cesto > h2 {
   margin: 0 0 55px;
-  color: white;
-  text-align: center;
-  font-size: 30px;
 }
 
-/* Keep the basket cards centred within the section */
-#produtos-selecionados {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Cada cartão do cesto */
-#produtos-selecionados > article {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  flex: 0 0 calc((100% - 80px) / 3);
-  min-width: 0;
-  min-height: 350px;
-  margin: 0;
-  padding: 25px;
-
-  background-color: white;
-  color: black;
-  border-radius: 12px;
-  text-align: center;
-}
-
-#produtos-selecionados article h2 {
-  margin: 0 0 20px;
-  font-size: 24px;
-}
-
-/* Imagens com o mesmo tamanho, sem deformar */
-#produtos-selecionados article img {
-  width: 100%;
-  height: 170px;
-  object-fit: contain;
-}
-
-#produtos-selecionados .preco {
-  margin: 20px 0 10px;
-  font-size: 20px;
-}
-
-/* Botão alinhado no fundo do cartão */
-#produtos-selecionados article button {
-  margin-top: auto;
-  padding: 5px 12px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Preço total */
 #total-cesto {
   margin: 80px 0 10px;
-  color: white;
-  text-align: center;
-  font-size: 30px;
   font-weight: bold;
 }
 
 /* Dois cartões por linha */
 @media (max-width: 900px) {
-  #produtos-selecionados > article {
-    flex-basis: calc((100% - 40px) / 2);
+  #produtos article {
+    width: calc((100% - 30px) / 2);
+  }
+
+  #produtos-selecionados article {
+    width: calc((100% - 40px) / 2);
   }
 }
 
 /* Um cartão por linha */
 @media (max-width: 600px) {
-  #cesto {
-    padding: 40px 20px;
+  header {
+    padding: 15px;
   }
 
-  #produtos-selecionados > article {
-    flex-basis: 100%;
+  nav ul {
+    gap: 15px;
+  }
+
+  #produtos article,
+  #produtos-selecionados article {
+    width: 100%;
+  }
+
+  #filtros label,
+  #filtros select,
+  #filtros input {
+    width: 100%;
+  }
+
+  #cesto {
+    padding: 40px 20px;
   }
 
   #total-cesto {
     margin-top: 45px;
     font-size: 26px;
   }
+}
+
+/* Checkout */
+#checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 40px;
+  padding: 40px 20px;
+  background-color: white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+#checkout #total-cesto {
+  margin: 0;
+  color: #222;
+}
+
+#checkout label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#checkout input[type="text"] {
+  max-width: 100%;
+  padding: 8px;
+  font: inherit;
+}
+
+#comprar {
+  padding: 8px 20px;
+  font: inherit;
+  cursor: pointer;
+}
+
+#checkout p {
+  margin: 0;
+}
+
+#checkout p:empty {
+  display: none;
+}
+
+#valor-final {
+  font-size: 24px;
+  font-weight: bold;
 }
